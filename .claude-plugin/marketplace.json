@@ -1,0 +1,15 @@
+{
+  "name": "ticket-memo",
+  "owner": { "name": "Miffael" },
+  "metadata": {
+    "description": "ticket-memo skill: Project memory for AI agents as a linked Obsidian knowledge graph: tasks of any size with plans and change history (with rollbacks), entities with relations, a project glossary and topic hubs."
+  },
+  "plugins": [
+    {
+      "name": "ticket-memo",
+      "source": "./",
+      "description": "Project memory for AI agents as a linked Obsidian knowledge graph: tasks of any size with plans and change history (with rollbacks), entities with relations, a project glossary and topic hubs.",
+      "category": "productivity"
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "schema": 1,
+  "created": "<YYYY-MM-DD>",
+  "tasksDir": "tasks",
+  "language": { "plan": "en", "report": "en", "describe": "en" },
+  "projects": [
+    { "name": "<project-name>", "connected": "<YYYY-MM-DD>", "device": "<hostname>" }
+  ]
+}

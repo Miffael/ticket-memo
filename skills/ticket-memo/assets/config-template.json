@@ -1,0 +1,11 @@
+{
+  "docsRoot": "<path to the vault or a folder inside it; forward slashes, ~ and ${VAR} allowed>",
+  "project": "<project-name>",
+  "tasksDir": "tasks",
+  "planUpdates": "auto",
+  "reportUpdates": "on-request",
+  "describeSaves": "auto",
+  "graphUpdates": "auto",
+  "history": "full",
+  "language": { "plan": "en", "report": "en", "describe": "en" }
+}
