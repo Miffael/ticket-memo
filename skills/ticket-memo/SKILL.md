@@ -57,6 +57,7 @@ What daily work needs from the config:
   and history".
 - `language` — one ISO code for all notes, or `{ plan, report, describe }`;
   default `en`.
+- `statuses` — task statuses allowed in plans; see "Task statuses".
 
 The vault's own `.ticket-memo.json` manifest is edited only during setup,
 connection, upkeep or a settings change — never in daily work.
@@ -129,7 +130,8 @@ Type-specific keys:
 
 - task notes (`plan`, `history`, `report`, task topic notes): `task: <slug>`,
   and `project: <name>` when the vault is shared by several projects;
-  plan only: `status: in-progress | blocked | done`, `size: small | full`,
+  plan only: `status:` one of the configured `statuses` (default `open | to-do |
+  research | in-progress | review | blocked | done`), `size: small | full`,
   optional `ticket: PROJ-123`, `url: <tracker link>`.
 - `entity`: `kind: <kind folder>`, optional `status: active | retired`.
 - `term`: `kind: term | abbreviation | code | jargon`.
@@ -217,20 +219,9 @@ The value of the vault is in its links. Follow these rules on every write:
   output before saving it. This matters doubly when the vault is cloud-synced.
 - **People:** record roles, responsibilities and how to reach them only as far as
   the user provides it for the project. No personal data beyond that.
-
-### Cloud-synced folders
-
-`docsRoot` can live directly in a OneDrive, Google Drive, Dropbox or iCloud
-folder — that is how the vault reaches the user's other devices. Rules:
-
-- Write to the local synced path, never through a web API.
-- If a note you are about to edit is an online-only placeholder (OneDrive Files
-  On-Demand, Google Drive "streamed" files), reading it downloads it first; if
-  that fails, tell the user to mark the folder "Always keep on this device" /
-  "Available offline".
-- If you find sync-conflict copies (`<name>-<DEVICE>.md`, `<name> (1).md`,
-  `<name> (conflicted copy).md`), do not merge or delete them silently — report
-  them and offer to merge.
+- **Cloud-synced `docsRoot`** (OneDrive, Google Drive, Dropbox, iCloud): write to
+  the local path only; follow "Cloud-synced folders" in
+  `references/configuration.md`; never merge or delete conflict copies silently.
 
 ## Using the vault as context
 
@@ -298,6 +289,10 @@ setting.
 - `<slug> report` — a generated digest, never edited by hand, regenerated only
   when a status is requested (Mode 5).
 
+**Task statuses.** `status:` is one of `statuses` (meanings: configuration.md),
+kebab-case in frontmatter, Title Case in index/reports/hubs; all but `done` are
+active; a tracker task follows the ticket's status unless the user says otherwise.
+
 **Task size.** `size: small` — a quick to-do (an hour or so, a few steps): only
 the plan note, with goal, a short checklist and links; history is created only
 when the first entry has to be recorded. `size: full` — everything above.
@@ -358,7 +353,7 @@ Applies when `planUpdates` is `auto`. After any completed action — something
 installed, configured or built, a decision made, a verification run, something
 blocked:
 
-1. Check off completed items; add new ones if the scope changed.
+1. Check off done items, add new ones if the scope changed, update `status:`.
 2. Refresh `updated:` in the frontmatter and the "Last updated" line.
 3. **Move what is now history out of the plan** — record it as a history entry
    following `references/history.md` and the `history` setting. If the action
@@ -429,7 +424,7 @@ When the user asks for a status ("what am I working on", "status of docker-setup
    tasks unless the user asks for all. Reach into history only if the status needs
    to say how something came to be.
 2. Regenerate `<slug> report` from scratch using `assets/report-template.md`, in
-   the `report` language: status (In Progress / Blocked / Done), current stage,
+   the `report` language: status (Title Case of the plan's `status:`), current stage,
    done, in progress, blockers. Under ~15 lines. Small tasks get no report file —
    just the chat line.
 3. Give a short summary in chat: 1–2 lines per task.
@@ -444,11 +439,8 @@ postgres", "which keys exist"):
    meanings, entity notes and their Relations for structure, `standards/` for
    "what is our rule for…", topic hubs for overviews. Go to history only for
    "why / when / what did we try".
-2. If the question is about a live system, verify with read-only commands —
-   Linux: `docker ps -a`, `systemctl list-units`, `ss -tlnp`, `ls -l ~/.ssh`;
-   Windows: `winget list`, `Get-Service`, `Get-NetTCPConnection -State Listen`,
-   `docker ps -a`; macOS: `brew list`, `launchctl list`,
-   `lsof -iTCP -sTCP:LISTEN`.
+2. If the question is about a live system, verify it with read-only commands
+   (`docker ps -a`, `systemctl list-units`, `Get-Service`, `brew list`, …).
 3. If the vault and reality disagree, report the difference and offer to update
    the notes (or to investigate an unexpected change). Do not silently "fix"
    either side. If the vault has no answer, say so and offer to create the note.

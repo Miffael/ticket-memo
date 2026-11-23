@@ -12,7 +12,7 @@ tags: []
 
 | Task | Status | Size | Updated | Current stage |   <!-- shared vault: add a Project column after Task -->
 |---|---|---|---|---|
-| [[<slug> plan\|<slug>]] | in-progress | full | <YYYY-MM-DD> | <one sentence> |
+| [[<slug> plan\|<slug>]] | In Progress | full | <YYYY-MM-DD> | <one sentence> |
 
 ## Topics
 

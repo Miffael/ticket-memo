@@ -10,7 +10,7 @@ tags: []
 
 Generated: <YYYY-MM-DD> (auto-generated from [[<slug> plan]] — do not edit by hand)
 
-- **Status:** In Progress | Blocked | Done
+- **Status:** <Title Case of the plan's status: Open | To Do | Research | In Progress | Review | Blocked | Done>
 - **Current stage:** <where the task is right now>
 
 ## Done

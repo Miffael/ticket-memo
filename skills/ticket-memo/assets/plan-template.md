@@ -1,7 +1,7 @@
 ---
 type: plan
 task: <slug>
-status: in-progress
+status: in-progress     # one of the configured statuses: open | to-do | research | in-progress | review | blocked | done
 size: full              # small | full
 ticket:                 # optional tracker key, e.g. PROJ-123
 url:                    # optional tracker link

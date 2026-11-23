@@ -9,6 +9,8 @@ the short summary in `SKILL.md`.
 - Where the config lives
 - All keys
 - Paths that work on several machines
+- Cloud-synced folders
+- Task statuses
 - The vault manifest
 - Changing settings
 
@@ -67,6 +69,7 @@ missing keys take the defaults shown.
 | `graphUpdates` | `auto` | `auto`: create and extend entity, term and topic notes as they come up. `suggest`: list proposed notes at the end of a reply, create on agreement. `off`: only when asked. |
 | `history` | `full` | `full`: keep task histories — work, decision records, changes with rollback. `changes`: only entries that changed something outside the vault. `off`: no history notes; plans keep a Rollback section for changes still in effect. Details: `references/history.md`. |
 | `language` | `en` | ISO 639-1 code(s). One string for all notes (`"en"`) or an object: `plan` — plan and history notes; `report` — reports and status summaries; `describe` — write-ups, guides, decisions, entity, term and topic notes, the glossary. A missing key falls back to `en`. |
+| `statuses` | `["open", "to-do", "research", "in-progress", "review", "blocked", "done"]` | Task statuses allowed in plans' `status:`, kebab-case. Replace the list to match a tracker's workflow (e.g. add `qa`, drop `research`); `done` is always kept. Shown in Title Case in the index and reports. |
 
 ## Paths that work on several machines
 
@@ -91,6 +94,40 @@ Typical cloud locations:
 | iCloud Drive | `~/iCloudDrive/…` | `~/Library/Mobile Documents/com~apple~CloudDocs/…` |
 
 On Linux: the official client where one exists, or an rclone mount.
+
+## Cloud-synced folders
+
+`docsRoot` can live directly in a OneDrive, Google Drive, Dropbox or iCloud
+folder — that is how the vault reaches the user's other devices. Rules:
+
+- Write to the local synced path, never through a web API.
+- If a note you are about to edit is an online-only placeholder (OneDrive Files
+  On-Demand, Google Drive "streamed" files), reading it downloads it first; if
+  that fails, tell the user to mark the folder "Always keep on this device" /
+  "Available offline".
+- If you find sync-conflict copies (`<name>-<DEVICE>.md`, `<name> (1).md`,
+  `<name> (conflicted copy).md`), do not merge or delete them silently — report
+  them and offer to merge.
+
+## Task statuses
+
+`statuses` lists the values allowed in a plan's `status:`, in kebab-case. Default
+meanings:
+
+| Status | Meaning |
+|---|---|
+| `open` | registered (e.g. a tracker ticket), not yet triaged or planned |
+| `to-do` | planned and ready, work not started |
+| `research` | investigating or designing; no implementation yet |
+| `in-progress` | being implemented |
+| `review` | the work is done and waits for review, approval or a team choice |
+| `blocked` | cannot move until something outside the task happens; the plan names the blocker |
+| `done` | finished |
+
+A project may replace the list to match its tracker's workflow (add `qa`, drop
+`research`); `done` is always kept. Statuses are shown in Title Case in the
+index, reports and topic hubs. Every status but `done` counts as active. A value
+outside the list is reported by a vault check, not silently rewritten.
 
 ## The vault manifest
 
