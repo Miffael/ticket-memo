@@ -12,7 +12,9 @@ Find and list:
 - orphan notes — no link to a hub and no `topics:`;
 - duplicate notes for the same thing (by file name and `aliases`);
 - terms missing from `glossary/glossary.md`, topics missing from `index.md`;
-- plans whose `updated:` is old while the task is `in-progress`;
+- plans whose `updated:` is old while the task is active (any status but `done`);
+- plan statuses outside the configured `statuses` (including the Title Case or
+  tracker spelling, such as `In Progress`), with the kebab-case value to use;
 - current and history mixed: chronology ("was X, became Y") in plans, entities,
   topics or standards; a rule or decision in force that exists only in a history
   entry; "Decisions in force" lines without a link to their record (when history

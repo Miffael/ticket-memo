@@ -1,6 +1,6 @@
 {
   "name": "ticket-memo",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Project memory for AI agents as a linked Obsidian knowledge graph: tasks of any size with plans and change history (with rollbacks), entities with relations, a project glossary and topic hubs.",
   "author": { "name": "Miffael" },
   "homepage": "https://github.com/Miffael/ticket-memo",

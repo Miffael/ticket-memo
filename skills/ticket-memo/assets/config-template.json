@@ -7,5 +7,6 @@
   "describeSaves": "auto",
   "graphUpdates": "auto",
   "history": "full",
-  "language": { "plan": "en", "report": "en", "describe": "en" }
+  "language": { "plan": "en", "report": "en", "describe": "en" },
+  "statuses": ["open", "to-do", "research", "in-progress", "review", "blocked", "done"]
 }

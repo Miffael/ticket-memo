@@ -421,6 +421,7 @@ Only `docsRoot` is required; missing keys take the defaults below.
 | `graphUpdates` | `auto` | `auto` — create/extend entity, term and topic notes as they come up; `suggest` — propose them at the end of a reply; `off` — only when asked. |
 | `history` | `full` | `full` — keep per-task history: work, decision records, changes with rollback. `changes` — only changes outside the vault with their rollback. `off` — no history notes; plans keep a Rollback section for changes still in effect. See [Current context and history](#current-context-and-history). |
 | `language` | `en` | A single ISO 639-1 code for all notes, or an object `{ "plan", "report", "describe" }`. |
+| `statuses` | `open`, `to-do`, `research`, `in-progress`, `review`, `blocked`, `done` | Task statuses allowed in plans (kebab-case); replace the list to match your tracker's workflow, `done` is always kept. |
 
 Every setting can be changed in conversation — *"stop auto-updating plans"*, *"move tasks to projects/"*,
 *"write reports in German"*. The agent edits the config and, if folders move, asks before moving them.

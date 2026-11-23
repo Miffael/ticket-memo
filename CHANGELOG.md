@@ -2,6 +2,22 @@
 
 All notable changes to this skill. Versions follow [Semantic Versioning](https://semver.org/).
 
+## [1.1.0] — 2026-11-23
+
+### Added
+- Task statuses beyond `in-progress | blocked | done`: the default set is now
+  `open | to-do | research | in-progress | review | blocked | done`, each with a defined meaning
+  ("Task statuses" in `references/configuration.md`).
+- `statuses` setting to replace the list with a tracker's workflow (`done` is always kept).
+
+### Changed
+- Statuses are kebab-case in frontmatter and Title Case in the index, reports and topic hubs.
+- "Cloud-synced folders" rules and the status meanings moved to `references/configuration.md` to keep
+  `SKILL.md` under 500 lines.
+- Plans' status is updated in Mode 2 when the task moves to another stage.
+- Vault check reports plan statuses outside the configured list and treats every status but `done`
+  as active when looking for stale plans.
+
 ## [1.0.0] — 2026-11-20
 
 ### Added
